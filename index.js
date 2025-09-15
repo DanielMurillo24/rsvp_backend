@@ -10,6 +10,7 @@ dbConnection();
 app.use(cors({
     origin: [
         'http://localhost:5173',
+        'rsvp-web-app-alpha.vercel.app',
     ], // Allow frontend to access backend
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allowed methods
     allowedHeaders: ['Content-Type', 'Authorization', 'x-token'], // Allowed headers
