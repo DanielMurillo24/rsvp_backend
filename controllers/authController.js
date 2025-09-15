@@ -31,20 +31,34 @@ const guestLogin = async (req, res = response) => {
       msg: "Contacta al Ingeniero",
     });
   }
-}
+};
 
-  const renewToken = async (req, res = response) => {
-    const { uid, name } = req;
-    const token = await generateJWT(uid, name);
+const renewToken = async (req, res = response) => {
+  const { uid } = req;
+
+  try {
+    const guest = await Invitado.findById(uid).populate("acompanantes");
+    if (!guest) {
+      return res.status(404).json({ ok: false, msg: "Invitado no encontrado" });
+    }
+
+    const token = await generateJWT(uid);
 
     res.json({
       ok: true,
       token,
       invitado: guest,
     });
-}
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      ok: false,
+      msg: "Error al renovar el token",
+    });
+  }
+};
 
 module.exports = {
   guestLogin,
-  renewToken
+  renewToken,
 };

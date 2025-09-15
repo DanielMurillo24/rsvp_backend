@@ -36,7 +36,7 @@ router.post(
 );
 
 router.put(
-    '/:codigoAcceso',
+    '/:id',
     validateJWT,
     [
         check('confirmado').optional().isBoolean().withMessage('Confirmado debe ser booleano'),
