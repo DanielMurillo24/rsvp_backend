@@ -34,7 +34,7 @@ const guestLogin = async (req, res = response) => {
 };
 
 const renewToken = async (req, res = response) => {
-  const { uid, codigoAcceso } = req;
+  const uid = req.uid;
 
   try {
     const guest = await Invitado.findById(uid).populate("acompanantes");
@@ -42,7 +42,7 @@ const renewToken = async (req, res = response) => {
       return res.status(404).json({ ok: false, msg: "Invitado no encontrado" });
     }
 
-    const token = await generateJWT(uid, codigoAcceso);
+    const token = await generateJWT(uid);
 
     res.json({
       ok: true,

@@ -12,13 +12,11 @@ const validateJWT = (req, res = response, next) => {
     }
 
     try {
-        const {uid, codigoAcceso} = jwt.verify(
+        const {uid} = jwt.verify(
             token, 
             process.env.SECRET_JWT_SEED
         );
-
         req.uid = uid;
-        req.codigoAcceso = codigoAcceso;
 
     } catch (error) {
         return res.status(401).json({
@@ -26,9 +24,7 @@ const validateJWT = (req, res = response, next) => {
             msg: 'Token not Valid'
         })
     }
-
     next();
-
 }
 
 module.exports = {
