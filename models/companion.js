@@ -20,7 +20,7 @@ const AcompananteSchema = new Schema({
     },
     condicionAlimenticia: {
         type: String,
-        enum: ["Ninguna", "Vegetariano", "Vegano", "Sin gluten", "Alergia frutos secos"],
+        enum: ["Ninguna", "Vegetariano"],
         default: "Ninguna"
     },
     invitado: { type: Schema.Types.ObjectId, ref: 'Invitado', required: true }

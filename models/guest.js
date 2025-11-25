@@ -29,9 +29,6 @@ const InvitadoSchema = new Schema(
       enum: [
         "Ninguna",
         "Vegetariano",
-        "Vegano",
-        "Sin gluten",
-        "Alergia frutos secos",
       ],
       default: "Ninguna",
     },

@@ -42,7 +42,7 @@ router.put(
         check('confirmado').optional().isBoolean().withMessage('Confirmado debe ser booleano'),
         check('tipoMenu').optional().isIn(['Adulto', 'Ninos']).withMessage('Tipo de menú inválido'),
         check('condicionAlimenticia').optional()
-            .isIn(['Ninguna', 'Vegetariano', 'Vegano', 'Sin gluten', 'Alergia frutos secos'])
+            .isIn(['Ninguna', 'Vegetariano'])
             .withMessage('Condición alimenticia inválida'),
         validateFields
     ],
